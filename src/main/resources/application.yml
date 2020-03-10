@@ -1,0 +1,26 @@
+# application properties
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com:
+      scurtis:
+        stockify: INFO
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database: postgresql
+    properties:
+      hibernate:
+        default_schema: stocky
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
