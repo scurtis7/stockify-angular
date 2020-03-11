@@ -4,6 +4,9 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+## private information
+src/main/resources/application-dev.yml
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
