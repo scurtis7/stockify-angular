@@ -1,0 +1,114 @@
+{
+  "bestMatches": [
+    {
+      "1. symbol": "MSFT",
+      "2. name": "Microsoft Corporation",
+      "3. type": "Equity",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.4545"
+    },
+    {
+      "1. symbol": "AMD",
+      "2. name": "Advanced Micro Devices Inc.",
+      "3. type": "Equity",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.4444"
+    },
+    {
+      "1. symbol": "MU",
+      "2. name": "Micron Technology Inc.",
+      "3. type": "Equity",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.4444"
+    },
+    {
+      "1. symbol": "MCHP",
+      "2. name": "Microchip Technology Incorporated",
+      "3. type": "Equity",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.4444"
+    },
+    {
+      "1. symbol": "MVIS",
+      "2. name": "MicroVision Inc.",
+      "3. type": "Equity",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.3846"
+    },
+    {
+      "1. symbol": "SMSI",
+      "2. name": "Smith Micro Software Inc.",
+      "3. type": "Equity",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.3571"
+    },
+    {
+      "1. symbol": "MBOT",
+      "2. name": "Microbot Medical Inc.",
+      "3. type": "Equity",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.3030"
+    },
+    {
+      "1. symbol": "FNGU",
+      "2. name": "MicroSectors FANG+ Index 3X Leveraged ETN",
+      "3. type": "ETF",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.2941"
+    },
+    {
+      "1. symbol": "MFGP",
+      "2. name": "Micro Focus International plc",
+      "3. type": "Equity",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.2174"
+    },
+    {
+      "1. symbol": "FNGD",
+      "2. name": "MicroSectors FANG+ Index -3X Inverse Leveraged ETN",
+      "3. type": "ETF",
+      "4. region": "United States",
+      "5. marketOpen": "09:30",
+      "6. marketClose": "16:00",
+      "7. timezone": "UTC-05",
+      "8. currency": "USD",
+      "9. matchScore": "0.1818"
+    }
+  ]
+}
