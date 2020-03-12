@@ -1,0 +1,56 @@
+
+.Search {
+  margin: 10px;
+  padding: 10px;
+}
+
+.Search-row {
+  color: #D5F5E3;
+}
+
+.Search-table {
+  color: #D5F5E3;
+}
+
+.Search-button {
+  background-color: #D5F5E3;
+  color: #0A5768;
+  border-color: #0A5768;
+}
+
+.Search-button:hover {
+  background-color: #0A5768;
+  color: #D5F5E3;
+  border-color: #D5F5E3;
+}
+
+.Search-button:active {
+  background-color: #0A5768;
+  color: #D5F5E3;
+  border-color: #D5F5E3;
+}
+
+.Search-button:focus {
+  background-color: #0A5768;
+  color: #D5F5E3;
+  border-color: #D5F5E3;
+}
+
+.Search-button:active:focus {
+  background-color: #0A5768;
+  color: #D5F5E3;
+  border-color: #D5F5E3;
+}
+
+.Search-button-active {
+  background-color: #0A5768;
+  color: #D5F5E3;
+  border-color: #D5F5E3;
+}
+
+.Search-input-group-text {
+  background-color: #0A5768;
+  color: #D5F5E3;
+  width: 120px;
+}
+
