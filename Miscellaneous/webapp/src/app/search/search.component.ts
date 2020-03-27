@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Stock } from "../model/stock";
 
 @Component({
   selector: 'app-search',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  stocks: Stock[];
+
   constructor() { }
 
   ngOnInit(): void {
+    this.searchStocks();
+  }
+
+  public searchStocks() {
   }
 
 }

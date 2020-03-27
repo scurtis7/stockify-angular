@@ -1,0 +1,54 @@
+<div class="Search">
+  <div class="row">
+    <div class="col">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text Search-input-group-text">Stock Search</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Symbol" id="stk" name="username">
+      </div>
+    </div>
+  </div>
+  <div class="row"><br/></div>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn Search-button" routerLinkActive="Search-button-active" >Search</button>
+    </div>
+  </div>
+  <div class="row"><br/></div>
+  <div class="row">
+    <div class="col">
+      <ul>
+        <li *ngFor="let stock of stocks">
+          <span class="badge">{{stock.name}}</span>
+        </li>
+      </ul>
+<!--      <table class="table table-striped Search-table">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>Symbol</th>-->
+<!--          <th>Name</th>-->
+<!--          <th>Type</th>-->
+<!--          <th>Region</th>-->
+<!--          <th>Timezone</th>-->
+<!--          <th>Currency</th>-->
+<!--          <th>Action</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--          <tr *ngFor="let stock of stocks">-->
+<!--            <td>{{ stock.symbol }}</td>-->
+<!--            <td>{{ stock.name }}</td>-->
+<!--            <td>{{ stock.type }}</td>-->
+<!--            <td>{{ stock.region }}</td>-->
+<!--            <td>{{ stock.timezone }}</td>-->
+<!--            <td>{{ stock.currency }}</td>-->
+<!--            <td></td>-->
+<!--          </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+    </div>
+
+  </div>
+</div>
+
