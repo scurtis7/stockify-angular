@@ -13,8 +13,8 @@ nav a:visited, a:link {
   color: #cfd8dc;
 }
 nav a:hover {
-  color: #254E58;
-  background-color: #cfd8dc;
+  color: #cfd8dc;
+  background-color: #6E6658;
 }
 nav a.active {
   color: #254E58;

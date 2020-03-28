@@ -16,4 +16,8 @@ export class StockListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  delete(stock: Stock) {
+    console.log(stock.name);
+  }
+
 }
