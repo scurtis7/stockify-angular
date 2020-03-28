@@ -10,5 +10,5 @@ export const STOCKS: Stock[] = [
   { symbol: 'PAYC', name: 'Paycom Software', type: 'Stock', region: 'USA', timezone: 'EST', currency: '$' },
   { symbol: 'VRTX', name: 'Vertex Pharmaceuticals', type: 'Stock', region: 'USA', timezone: 'EST', currency: '$' },
   { symbol: 'WMT', name: 'Walmart', type: 'Stock', region: 'USA', timezone: 'EST', currency: '$' },
-  { symbol: 'ZNGA', name: 'Zynga', type: 'Stock', region: 'USA', timezone: 'EST', currency: '$' },
+  { symbol: 'ZNGA', name: 'Zynga', type: 'Stock', region: 'USA', timezone: 'EST', currency: '$' }
 ];

@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* Application-wide Styles */
 h1 {
-  color: #607D8B;
+  color: #6E6658;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 500%;
+  font-size: 300%;
   margin: 0px;
 }
 h2, h3 {
@@ -13,7 +13,7 @@ h2, h3 {
 }
 body {
   margin: 2em;
-  background-color: #444444;
+  background-color: #88BDBC;
 }
 body, input[type="text"], button {
   color: #333;

@@ -4,18 +4,18 @@ nav a {
   text-decoration: none;
   margin: 10px;
   display: inline-block;
-  background-color: #eee;
+  background-color: #254E58;
   border-radius: 10px;
   width: 100px;
   text-align: center;
 }
 nav a:visited, a:link {
-  color: #334953;
+  color: #cfd8dc;
 }
 nav a:hover {
-  color: #607D8B;
+  color: #254E58;
   background-color: #cfd8dc;
 }
 nav a.active {
-  color: #607D8B;
+  color: #254E58;
 }
