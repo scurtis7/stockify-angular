@@ -45,22 +45,20 @@
 }
 
 button {
-  background-color: #eee;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  cursor: hand;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
 button.delete:hover {
   background-color: #6E6658;
+  color: white;
 }
 
 button.delete {
   position: relative;
-  /*left: 20px;*/
   top: -4px;
   margin-right: 5px;
   background-color: #254E58;
