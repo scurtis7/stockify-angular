@@ -1,1 +1,5 @@
-<p>stock-list works!</p>
+<ul class="heroes">
+  <li *ngFor="let stock of stocks">
+    <span class="badge">{{stock.symbol}}</span> {{stock.name}}
+  </li>
+</ul>
