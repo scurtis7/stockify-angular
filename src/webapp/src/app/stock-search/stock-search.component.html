@@ -1,1 +1,19 @@
-<p>stock-search works!</p>
+<h2>Search Stocks</h2>
+<div>
+  <label>
+    <input class="search" #stockSearch/>
+  </label>
+  <!-- (click) passes input value to search() and then clears the input -->
+  <button class="search" title="Search" (click)="search(stockSearch.value); stockSearch.value=''">
+    Search
+  </button>
+</div>
+<div *ngIf="stocks.length">
+  <ul class="result">
+    <li *ngFor="let stock of stocks">
+      <span class="badge">{{stock.symbol}}</span>
+      {{stock.name}}
+    </li>
+  </ul>
+</div>
+

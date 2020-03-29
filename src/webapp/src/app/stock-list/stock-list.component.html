@@ -1,8 +1,10 @@
 <ul class="stocks">
   <li *ngFor="let stock of stocks">
-    <span class="badge">{{stock.symbol}}</span>
-    <button class="delete" title="delete {{stock.symbol}}" (click)="delete(stock)">X</button>
-    {{stock.name}}
+    <a routerLink="/detail/{{stock.symbol}}">
+      <span class="badge">{{stock.symbol}}</span>
+      <button class="delete" title="delete {{stock.symbol}}" (click)="delete(stock)">X</button>
+      {{stock.name}}
+    </a>
   </li>
 </ul>
 
