@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.scurtis.stockify.model.Stock;
+import com.scurtis.stockify.model.StockQuote;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
@@ -48,6 +49,35 @@ public class StockifyConverter {
         }
 
         return searchResults;
+    }
+
+    public StockQuote convertStockQuote(String data) {
+        log.info("Method: convertStockQuote()");
+        StockQuote stockQuote = new StockQuote();
+        if (StringUtils.isEmpty(data)) {
+            return stockQuote;
+        }
+
+        try {
+            JsonNode rootNode = mapper.readTree(data);
+            JsonNode stockQuoteNode = rootNode.findValue("Global Quote");
+
+            stockQuote.setSymbol(stockQuoteNode.get("01. symbol").textValue());
+            stockQuote.setOpen(stockQuoteNode.get("02. open").textValue());
+            stockQuote.setHigh(stockQuoteNode.get("03. high").textValue());
+            stockQuote.setLow(stockQuoteNode.get("04. low").textValue());
+            stockQuote.setPrice(stockQuoteNode.get("05. price").textValue());
+            stockQuote.setVolume(stockQuoteNode.get("06. volume").textValue());
+            stockQuote.setVolume(stockQuoteNode.get("07. latest trading day").textValue());
+            stockQuote.setVolume(stockQuoteNode.get("08. previous close").textValue());
+            stockQuote.setVolume(stockQuoteNode.get("09. change").textValue());
+            stockQuote.setVolume(stockQuoteNode.get("10. change percent").textValue());
+
+        } catch (JsonProcessingException exception) {
+            log.error("Exception while converting stock quote data: ", exception);
+        }
+
+        return stockQuote;
     }
 
     private Stock convertArrayItemToStock(JsonNode arrayItem) {
