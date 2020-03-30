@@ -8,7 +8,7 @@ import lombok.Data;
  **/
 
 @Data
-public class Stock {
+public class StockSearch {
 
     private String symbol;
     private String name;

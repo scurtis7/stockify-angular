@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
-import { Stock } from "../stock";
 import { StockService } from "../stock.service";
+import {Stockquote} from "../stockquote";
 
 @Component({
   selector: 'app-stock-detail',
@@ -10,7 +10,7 @@ import { StockService } from "../stock.service";
   styleUrls: ['./stock-detail.component.css']
 })
 export class StockDetailComponent implements OnInit {
-  @Input() stock: Stock;
+  @Input() stockQuote: Stockquote;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,13 +18,13 @@ export class StockDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getStock();
+    this.getStockQuote();
   }
 
-  getStock(): void {
+  getStockQuote(): void {
     const symbol = this.route.snapshot.paramMap.get('symbol');
-    this.stockService.getStock(symbol)
-      .subscribe(stock => this.stock = stock);
+    this.stockService.getStockQuote(symbol)
+      .subscribe(stockQuote => this.stockQuote = stockQuote);
   }
 
 }

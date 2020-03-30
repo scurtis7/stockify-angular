@@ -3,8 +3,8 @@ package com.scurtis.stockify.converter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.scurtis.stockify.model.Stock;
 import com.scurtis.stockify.model.StockQuote;
+import com.scurtis.stockify.model.StockSearch;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
@@ -28,9 +28,9 @@ public class StockifyConverter {
     private static final String NODE_TIMEZONE = "7. timezone";
     private static final String NODE_CURRENCY = "8. currency";
 
-    public List<Stock> convertStockData(String data) {
+    public List<StockSearch> convertStockData(String data) {
         log.info("Method: convertStockData()");
-        List<Stock> searchResults = new ArrayList<>();
+        List<StockSearch> searchResults = new ArrayList<>();
         if (StringUtils.isEmpty(data)) {
             return searchResults;
         }
@@ -68,10 +68,10 @@ public class StockifyConverter {
             stockQuote.setLow(stockQuoteNode.get("04. low").textValue());
             stockQuote.setPrice(stockQuoteNode.get("05. price").textValue());
             stockQuote.setVolume(stockQuoteNode.get("06. volume").textValue());
-            stockQuote.setVolume(stockQuoteNode.get("07. latest trading day").textValue());
-            stockQuote.setVolume(stockQuoteNode.get("08. previous close").textValue());
-            stockQuote.setVolume(stockQuoteNode.get("09. change").textValue());
-            stockQuote.setVolume(stockQuoteNode.get("10. change percent").textValue());
+            stockQuote.setLastTradingDay(stockQuoteNode.get("07. latest trading day").textValue());
+            stockQuote.setPreviousClose(stockQuoteNode.get("08. previous close").textValue());
+            stockQuote.setChange(stockQuoteNode.get("09. change").textValue());
+            stockQuote.setChangePercent(stockQuoteNode.get("10. change percent").textValue());
 
         } catch (JsonProcessingException exception) {
             log.error("Exception while converting stock quote data: ", exception);
@@ -80,15 +80,15 @@ public class StockifyConverter {
         return stockQuote;
     }
 
-    private Stock convertArrayItemToStock(JsonNode arrayItem) {
-        Stock stock = new Stock();
-        stock.setSymbol(arrayItem.get(NODE_SYMBOL).textValue());
-        stock.setName(arrayItem.get(NODE_NAME).textValue());
-        stock.setType(arrayItem.get(NODE_TYPE).textValue());
-        stock.setRegion(arrayItem.get(NODE_REGION).textValue());
-        stock.setTimezone(arrayItem.get(NODE_TIMEZONE).textValue());
-        stock.setCurrency(arrayItem.get(NODE_CURRENCY).textValue());
-        return stock;
+    private StockSearch convertArrayItemToStock(JsonNode arrayItem) {
+        StockSearch stockSearch = new StockSearch();
+        stockSearch.setSymbol(arrayItem.get(NODE_SYMBOL).textValue());
+        stockSearch.setName(arrayItem.get(NODE_NAME).textValue());
+        stockSearch.setType(arrayItem.get(NODE_TYPE).textValue());
+        stockSearch.setRegion(arrayItem.get(NODE_REGION).textValue());
+        stockSearch.setTimezone(arrayItem.get(NODE_TIMEZONE).textValue());
+        stockSearch.setCurrency(arrayItem.get(NODE_CURRENCY).textValue());
+        return stockSearch;
     }
 
 }

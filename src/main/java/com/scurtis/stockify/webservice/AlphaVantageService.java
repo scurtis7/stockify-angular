@@ -2,8 +2,8 @@ package com.scurtis.stockify.webservice;
 
 import com.scurtis.stockify.config.StockifyProperties;
 import com.scurtis.stockify.converter.StockifyConverter;
-import com.scurtis.stockify.model.Stock;
 import com.scurtis.stockify.model.StockQuote;
+import com.scurtis.stockify.model.StockSearch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +28,7 @@ public class AlphaVantageService {
     private final StockifyConverter converter;
     private final StockifyProperties properties;
 
-    public List<Stock> search(String keyword) {
+    public List<StockSearch> search(String keyword) {
         String url = BASE_URL + FUNCTION_SYMBOL_SEARCH + "&keywords=" + keyword + properties.getApikey();
         return converter.convertStockData(callWebservice(url).getBody());
     }

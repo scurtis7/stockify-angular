@@ -1,6 +1,6 @@
 package com.scurtis.stockify.converter;
 
-import com.scurtis.stockify.model.Stock;
+import com.scurtis.stockify.model.StockSearch;
 import com.scurtis.stockify.util.JsonReader;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +20,7 @@ class StockifyConverterTest {
     private JsonReader jsonReader = new JsonReader();
     private StockifyConverter stockifyConverter;
 
-    private List<Stock> stockList;
+    private List<StockSearch> stockList;
 
     @Test
     void stockResultsAreCorrectlyConverted() {

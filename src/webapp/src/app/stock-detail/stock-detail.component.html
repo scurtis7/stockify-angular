@@ -1,1 +1,13 @@
-<p>stock-detail works!</p>
+<div *ngIf="stockQuote">
+  <h2>{{stockQuote.symbol | uppercase}}</h2>
+  <div><span>Open: </span>{{stockQuote.open}}</div>
+  <div><span>High: </span>{{stockQuote.high}}</div>
+  <div><span>Low: </span>{{stockQuote.low}}</div>
+  <div><span>Price: </span>{{stockQuote.price}}</div>
+  <div><span>Volume: </span>{{stockQuote.volume}}</div>
+  <div><span>Last Trading Day: </span>{{stockQuote.lastTradingDay}}</div>
+  <div><span>Previous Close: </span>{{stockQuote.previousClose}}</div>
+  <div><span>Change: </span>{{stockQuote.change}}</div>
+  <div><span>Change Percent: </span>{{stockQuote.changePercent}}</div>
+</div>
+

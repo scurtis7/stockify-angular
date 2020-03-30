@@ -1,7 +1,7 @@
 package com.scurtis.stockify.controller;
 
-import com.scurtis.stockify.model.Stock;
 import com.scurtis.stockify.model.StockQuote;
+import com.scurtis.stockify.model.StockSearch;
 import com.scurtis.stockify.webservice.AlphaVantageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -27,7 +27,7 @@ public class AlphaRestController {
     private final AlphaVantageService alphaVantageService;
 
     @GetMapping(value = "/search/{symbol}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Stock> search(@PathVariable("symbol") String symbol) {
+    public List<StockSearch> search(@PathVariable("symbol") String symbol) {
         return alphaVantageService.search(symbol);
     }
 
