@@ -6,7 +6,7 @@ import com.scurtis.stockify.model.StockQuote;
 import com.scurtis.stockify.model.StockSearch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -30,17 +30,24 @@ public class AlphaVantageService {
 
     public List<StockSearch> search(String keyword) {
         String url = BASE_URL + FUNCTION_SYMBOL_SEARCH + "&keywords=" + keyword + properties.getApikey();
-        return converter.convertStockData(callWebservice(url).getBody());
+        return converter.convertStockData(callWebservice(url));
     }
 
     public StockQuote getStockQuote(String symbol) {
         String url = BASE_URL + FUNCTION_GLOBAL_QUOTE + "&symbol=" + symbol + properties.getApikey();
-        return converter.convertStockQuote(callWebservice(url).getBody());
+        return converter.convertStockQuote(callWebservice(url));
     }
 
-    private ResponseEntity<String> callWebservice(String url) {
+    private String callWebservice(String url) {
         log.info("Method: callWebservice({})", url);
-        return restTemplate.getForEntity(url, String.class);
+        String response = restTemplate.getForEntity(url, String.class).getBody();
+        if (StringUtils.isEmpty(response)) {
+            log.error("Response is empty");
+        } else if (response.contains("Error")) {
+            log.error(response);
+            response = "";
+        }
+        return response;
     }
 
 
