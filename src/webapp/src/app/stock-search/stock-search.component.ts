@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from "../stock";
+import { ActivatedRoute } from "@angular/router";
+import { StockService } from "../stock.service";
 
 @Component({
   selector: 'app-stock-search',
@@ -9,21 +11,18 @@ import { Stock } from "../stock";
 export class StockSearchComponent implements OnInit {
   stocks: Stock[] = [];
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private stockService: StockService
+  ) { }
 
   ngOnInit(): void {
-    // this.stocks = [
-    //   {symbol: 'AAPL', name: 'Apple', type: 'Stock', currency: '$', timezone: 'EST', region: 'USA'},
-    //   {symbol: 'MA', name: 'Mastercard', type: 'Stock', currency: '$', timezone: 'EST', region: 'USA'},
-    //   {symbol: 'MSFT', name: 'Microsoft', type: 'Stock', currency: '$', timezone: 'EST', region: 'USA'},
-    //   {symbol: 'WMT', name: 'Walmart', type: 'Stock', currency: '$', timezone: 'EST', region: 'USA'},
-    //   {symbol: 'ZNGA', name: 'Zynga', type: 'Stock', currency: '$', timezone: 'EST', region: 'USA'},
-    //   {symbol: 'SBUX', name: 'Starbucks', type: 'Stock', currency: '$', timezone: 'EST', region: 'USA'}
-    // ];
   }
 
   search(searchValue: string) {
     console.log(searchValue);
+    this.stockService.stockSearch(searchValue)
+      .subscribe(results => this.stocks = results);
   }
 
 }
