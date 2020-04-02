@@ -1,7 +1,6 @@
 <ul class="stocks">
   <li *ngFor="let stock of stocks">
     <a routerLink="/stockdetail/{{stock.symbol}}">
-<!--    <a routerLink="/stockdetail">-->
       <span class="badge">{{stock.symbol}}</span>
       <button class="delete" title="delete {{stock.symbol}}" (click)="delete(stock)">X</button>
       {{stock.name}}

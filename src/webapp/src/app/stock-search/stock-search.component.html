@@ -11,9 +11,15 @@
 <div *ngIf="stocks.length">
   <ul class="result">
     <li *ngFor="let stock of stocks">
-      <span class="badge">{{stock.symbol}}</span>
-      {{stock.name}}
+      <a routerLink="/stockdetail/{{stock.symbol}}">
+        <span class="badge">{{stock.symbol}}</span>
+        {{stock.name}}
+      </a>
     </li>
   </ul>
 </div>
+
+
+
+
 
