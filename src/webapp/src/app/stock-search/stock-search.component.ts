@@ -17,6 +17,13 @@ export class StockSearchComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // For testing purposes
+    // this.stocks = [
+    //   {"symbol":"AAPL", "name":"This is a small name", "currency":"currency", "timezone":"timezone", "region":"region", "type":"type"},
+    //   {"symbol":"BA", "name":"This is a medium level name", "currency":"currency", "timezone":"timezone", "region":"region", "type":"type"},
+    //   {"symbol":"BAC", "name":"This is a large name to test large names", "currency":"currency", "timezone":"timezone", "region":"region", "type":"type"},
+    //   {"symbol":"MA", "name":"This is a very large name to test what happens with large names going even larger and even larger", "currency":"currency", "timezone":"timezone", "region":"region", "type":"type"}
+    // ]
   }
 
   search(searchValue: string) {
