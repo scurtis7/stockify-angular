@@ -29,12 +29,12 @@ public class AlphaVantageService {
     private final StockifyProperties properties;
 
     public List<StockSearch> search(String keyword) {
-        String url = BASE_URL + FUNCTION_SYMBOL_SEARCH + "&keywords=" + keyword + properties.getApikey();
+        String url = BASE_URL + FUNCTION_SYMBOL_SEARCH + "&keywords=" + keyword + properties.getAlphaApiKey();
         return converter.convertStockData(callWebservice(url));
     }
 
     public StockQuote getStockQuote(String symbol) {
-        String url = BASE_URL + FUNCTION_GLOBAL_QUOTE + "&symbol=" + symbol + properties.getApikey();
+        String url = BASE_URL + FUNCTION_GLOBAL_QUOTE + "&symbol=" + symbol + properties.getAlphaApiKey();
         return converter.convertStockQuote(callWebservice(url));
     }
 

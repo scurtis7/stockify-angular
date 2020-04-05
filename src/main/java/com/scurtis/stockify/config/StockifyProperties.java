@@ -16,15 +16,15 @@ import static org.springframework.util.Assert.notNull;
 @ConfigurationProperties(prefix = "com.scurtis.stockify")
 public class StockifyProperties {
 
-    private String apikey;
+    private String alphaApiKey;
 
     @PostConstruct
     public void postConstruct() {
-        notNull(apikey, "com.scurtis.stockify.apikey property must be set and may not be null");
+        notNull(alphaApiKey, "com.scurtis.stockify.apikey property must be set and may not be null");
     }
 
-    public String getApikey() {
-        return "&apikey=" + apikey;
+    public String getAlphaApiKey() {
+        return "&apikey=" + alphaApiKey;
     }
 
 }
