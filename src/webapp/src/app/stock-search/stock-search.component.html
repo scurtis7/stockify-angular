@@ -1,10 +1,10 @@
 <h2>Search Stocks</h2>
 <div>
   <label>
-    <input class="search" #stockSearch/>
+    <input class="search" #alphaSearch/>
   </label>
   <!-- (click) passes input value to search() and then clears the input -->
-  <button class="search" title="Search" (click)="search(stockSearch.value); stockSearch.value=''">
+  <button class="search" title="Search" (click)="search(alphaSearch.value); alphaSearch.value=''">
     Search
   </button>
 </div>

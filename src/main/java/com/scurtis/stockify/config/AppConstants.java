@@ -7,8 +7,10 @@ package com.scurtis.stockify.config;
 
 public class AppConstants {
 
-    // Base URL
-    public static final String BASE_URL = "https://www.alphavantage.co/query?";
+    // Alpha Vantage Base URL
+    public static final String ALPHA_VANTAGE_BASE_URL = "https://www.alphavantage.co/query?";
+    // Finnhub Base URL
+    public static final String FINN_HUB_BASE_URL = "https://finnhub.io/api/v1";
 
     // Symbol
     public static final String SYMBOL = "&symbol=";

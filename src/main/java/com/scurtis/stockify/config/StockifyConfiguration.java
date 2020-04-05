@@ -2,6 +2,7 @@ package com.scurtis.stockify.config;
 
 import com.scurtis.stockify.converter.StockifyConverter;
 import com.scurtis.stockify.webservice.AlphaVantageService;
+import com.scurtis.stockify.webservice.FinnHubService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -27,6 +28,11 @@ public class StockifyConfiguration {
     @Bean
     public AlphaVantageService alphaVantageService(RestTemplate restTemplate, StockifyConverter converter, StockifyProperties properties) {
         return new AlphaVantageService(restTemplate, converter, properties);
+    }
+
+    @Bean
+    public FinnHubService finnHubService(RestTemplate restTemplate, StockifyProperties properties) {
+        return new FinnHubService(restTemplate, properties);
     }
 
     @Bean

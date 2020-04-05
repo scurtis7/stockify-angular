@@ -1,4 +1,4 @@
-package com.scurtis.stockify.model;
+package com.scurtis.stockify.model.alphavantage;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import lombok.Data;
  **/
 
 @Data
-public class StockQuote {
+public class AlphaQuote {
 
     private String symbol;
     private String open;

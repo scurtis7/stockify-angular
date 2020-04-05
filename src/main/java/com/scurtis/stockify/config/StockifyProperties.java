@@ -17,14 +17,20 @@ import static org.springframework.util.Assert.notNull;
 public class StockifyProperties {
 
     private String alphaApiKey;
+    private String finnToken;
 
     @PostConstruct
     public void postConstruct() {
-        notNull(alphaApiKey, "com.scurtis.stockify.apikey property must be set and may not be null");
+        notNull(alphaApiKey, "com.scurtis.stockify.alphaApiKey property must be set and may not be null");
+        notNull(finnToken, "com.scurtis.stockify.finnToken property must be set and may not be null");
     }
 
     public String getAlphaApiKey() {
         return "&apikey=" + alphaApiKey;
+    }
+
+    public String getFinnToken() {
+        return "&token=" + finnToken;
     }
 
 }
