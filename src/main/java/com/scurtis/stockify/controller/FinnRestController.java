@@ -1,5 +1,6 @@
 package com.scurtis.stockify.controller;
 
+import com.scurtis.stockify.model.finnhub.FinnPriceTarget;
 import com.scurtis.stockify.model.finnhub.FinnQuote;
 import com.scurtis.stockify.webservice.FinnHubService;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,12 @@ public class FinnRestController {
 
     @GetMapping(value = "/quote/{symbol}", produces = MediaType.APPLICATION_JSON_VALUE)
     public FinnQuote quote(@PathVariable("symbol") String symbol) {
-        FinnQuote quote = finnHubService.getQuote(symbol);
-        return quote;
+        return finnHubService.getQuote(symbol);
+    }
+
+    @GetMapping(value = "/price-target/{symbol}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public FinnPriceTarget getPriceTarget(@PathVariable("symbol") String symbol) {
+        return finnHubService.getPriceTarget(symbol);
     }
 
 }
