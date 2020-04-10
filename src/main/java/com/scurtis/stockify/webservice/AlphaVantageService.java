@@ -6,8 +6,7 @@ import com.scurtis.stockify.model.alphavantage.AlphaQuote;
 import com.scurtis.stockify.model.alphavantage.AlphaSearch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.StringUtils;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
@@ -20,35 +19,33 @@ import static com.scurtis.stockify.config.AppConstants.FUNCTION_SYMBOL_SEARCH;
  * Date: Mar 10, 2020
  **/
 
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 public class AlphaVantageService {
 
-    private final RestTemplate restTemplate;
+    private WebClient webClient;
     private final StockifyConverter converter;
     private final StockifyProperties properties;
 
     public List<AlphaSearch> search(String keyword) {
+        log.info("Method: search('{}')", keyword);
         String url = ALPHA_VANTAGE_BASE_URL + FUNCTION_SYMBOL_SEARCH + "&keywords=" + keyword + properties.getAlphaApiKey();
-        return converter.convertStockData(callWebservice(url));
+        String response = getWebClient().get().uri(url).retrieve().bodyToMono(String.class).block();
+        return converter.convertStockData(response);
     }
 
     public AlphaQuote getStockQuote(String symbol) {
+        log.info("Method: getStockQuote('{}')", symbol);
         String url = ALPHA_VANTAGE_BASE_URL + FUNCTION_GLOBAL_QUOTE + "&symbol=" + symbol + properties.getAlphaApiKey();
-        return converter.convertStockQuote(callWebservice(url));
+        String response = getWebClient().get().uri(url).retrieve().bodyToMono(String.class).block();
+        return converter.convertStockQuote(response);
     }
 
-    private String callWebservice(String url) {
-        log.info("Method: callWebservice({})", url);
-        String response = restTemplate.getForEntity(url, String.class).getBody();
-        if (StringUtils.isEmpty(response)) {
-            log.error("Response is empty");
-        } else if (response.contains("Error")) {
-            log.error(response);
-            response = "";
+    private WebClient getWebClient() {
+        if (webClient == null) {
+            webClient = WebClient.create();
         }
-        return response;
+        return webClient;
     }
-
 
 }

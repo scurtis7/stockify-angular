@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
@@ -30,13 +31,18 @@ public class StockifyConfiguration {
     }
 
     @Bean
+    public WebClient webClient() {
+        return WebClient.create();
+    }
+
+    @Bean
     public StockifyProperties stockifyProperties() {
         return new StockifyProperties();
     }
 
     @Bean
-    public AlphaVantageService alphaVantageService(RestTemplate restTemplate, StockifyConverter converter, StockifyProperties properties) {
-        return new AlphaVantageService(restTemplate, converter, properties);
+    public AlphaVantageService alphaVantageService(WebClient webClient, StockifyConverter converter, StockifyProperties properties) {
+        return new AlphaVantageService(converter, properties);
     }
 
     @Bean
