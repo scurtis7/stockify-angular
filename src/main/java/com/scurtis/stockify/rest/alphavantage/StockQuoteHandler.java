@@ -1,6 +1,5 @@
 package com.scurtis.stockify.rest.alphavantage;
 
-import com.scurtis.stockify.model.alphavantage.AlphaQuote;
 import com.scurtis.stockify.webservice.AlphaVantageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,8 +24,8 @@ public class StockQuoteHandler implements HandlerFunction<ServerResponse> {
     @Override
     public Mono<ServerResponse> handle(ServerRequest request) {
         log.info("Method: handle()");
-        AlphaQuote result = alphaVantageService.getStockQuote(request.pathVariable("symbol"));
-        return ServerResponse.ok().bodyValue(result);
+        return ServerResponse.ok()
+                .bodyValue(alphaVantageService.getStockQuote(request.pathVariable("symbol")));
     }
 
 }

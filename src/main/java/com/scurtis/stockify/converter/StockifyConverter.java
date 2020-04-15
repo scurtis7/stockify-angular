@@ -6,7 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.scurtis.stockify.model.alphavantage.AlphaQuote;
 import com.scurtis.stockify.model.alphavantage.AlphaSearch;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.StringUtils;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,38 +29,50 @@ public class StockifyConverter {
     private static final String NODE_TIMEZONE = "7. timezone";
     private static final String NODE_CURRENCY = "8. currency";
 
-    public List<AlphaSearch> convertStockData(String data) {
+    public Flux<AlphaSearch> convertStockData(Mono<String> data) {
         log.info("Method: convertStockData()");
         List<AlphaSearch> searchResults = new ArrayList<>();
-        if (StringUtils.isEmpty(data)) {
-            return searchResults;
-        }
-
-        try {
-            JsonNode rootNode = mapper.readTree(data);
-            JsonNode stockNodes = rootNode.findValue("bestMatches");
-
-            if (stockNodes.isArray()) {
-                for (JsonNode arrayItem : stockNodes) {
-                    searchResults.add(convertArrayItemToStock(arrayItem));
-                }
-            }
-        } catch (JsonProcessingException exception) {
-            log.error("Exception while converting stock data: ", exception);
-        }
-
-        return searchResults;
+        return Flux.fromIterable(searchResults);
+//        if (StringUtils.isEmpty(data)) {
+//            return searchResults;
+//        }
+//
+//        try {
+//            JsonNode rootNode = mapper.readTree(data);
+//            JsonNode stockNodes = rootNode.findValue("bestMatches");
+//
+//            if (stockNodes.isArray()) {
+//                for (JsonNode arrayItem : stockNodes) {
+//                    searchResults.add(convertArrayItemToStock(arrayItem));
+//                }
+//            }
+//        } catch (JsonProcessingException exception) {
+//            log.error("Exception while converting stock data: ", exception);
+//        }
+//
+//        return searchResults;
     }
 
-    public AlphaQuote convertStockQuote(String data) {
+    public Mono<AlphaQuote> convertStockQuote(Mono<String> data) {
         log.info("Method: convertStockQuote()");
-        AlphaQuote alphaQuote = new AlphaQuote();
-        if (StringUtils.isEmpty(data)) {
-            return alphaQuote;
-        }
+        return data.map(this::convertQuote).onErrorReturn(new AlphaQuote());
+    }
 
+    private AlphaSearch convertArrayItemToStock(JsonNode arrayItem) {
+        AlphaSearch alphaSearch = new AlphaSearch();
+        alphaSearch.setSymbol(arrayItem.get(NODE_SYMBOL).textValue());
+        alphaSearch.setName(arrayItem.get(NODE_NAME).textValue());
+        alphaSearch.setType(arrayItem.get(NODE_TYPE).textValue());
+        alphaSearch.setRegion(arrayItem.get(NODE_REGION).textValue());
+        alphaSearch.setTimezone(arrayItem.get(NODE_TIMEZONE).textValue());
+        alphaSearch.setCurrency(arrayItem.get(NODE_CURRENCY).textValue());
+        return alphaSearch;
+    }
+
+    private AlphaQuote convertQuote(String quote) {
         try {
-            JsonNode rootNode = mapper.readTree(data);
+            AlphaQuote alphaQuote = new AlphaQuote();
+            JsonNode rootNode = mapper.readTree(quote);
             JsonNode stockQuoteNode = rootNode.findValue("Global Quote");
 
             alphaQuote.setSymbol(stockQuoteNode.get("01. symbol").textValue());
@@ -72,23 +85,10 @@ public class StockifyConverter {
             alphaQuote.setPreviousClose(stockQuoteNode.get("08. previous close").textValue());
             alphaQuote.setChange(stockQuoteNode.get("09. change").textValue());
             alphaQuote.setChangePercent(stockQuoteNode.get("10. change percent").textValue());
-
-        } catch (JsonProcessingException exception) {
-            log.error("Exception while converting stock quote data: ", exception);
+            return alphaQuote;
+        } catch (JsonProcessingException e) {
+            return new AlphaQuote();
         }
-
-        return alphaQuote;
-    }
-
-    private AlphaSearch convertArrayItemToStock(JsonNode arrayItem) {
-        AlphaSearch alphaSearch = new AlphaSearch();
-        alphaSearch.setSymbol(arrayItem.get(NODE_SYMBOL).textValue());
-        alphaSearch.setName(arrayItem.get(NODE_NAME).textValue());
-        alphaSearch.setType(arrayItem.get(NODE_TYPE).textValue());
-        alphaSearch.setRegion(arrayItem.get(NODE_REGION).textValue());
-        alphaSearch.setTimezone(arrayItem.get(NODE_TIMEZONE).textValue());
-        alphaSearch.setCurrency(arrayItem.get(NODE_CURRENCY).textValue());
-        return alphaSearch;
     }
 
 }
