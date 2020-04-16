@@ -1,5 +1,6 @@
 package com.scurtis.stockify.rest.alphavantage;
 
+import com.scurtis.stockify.webservice.AlphaVantageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ public class AlphaVantageRouter {
 
     private final SearchHandler searchHandler;
     private final StockQuoteHandler stockQuoteHandler;
+    private final AlphaVantageService alphaVantageService;
 
     @Bean
     RouterFunction<ServerResponse> searchSymbolRoute() {

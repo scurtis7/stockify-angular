@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.scurtis.stockify.model.alphavantage.AlphaQuote;
 import com.scurtis.stockify.model.alphavantage.AlphaSearch;
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
@@ -29,16 +28,41 @@ public class StockifyConverter {
     private static final String NODE_TIMEZONE = "7. timezone";
     private static final String NODE_CURRENCY = "8. currency";
 
-    public Flux<AlphaSearch> convertStockData(Mono<String> data) {
+    public List<AlphaSearch> convertStockData(Mono<String> data) {
         log.info("Method: convertStockData()");
         List<AlphaSearch> searchResults = new ArrayList<>();
-        return Flux.fromIterable(searchResults);
+        return searchResults;
+
+//        return data.map(quotes -> {
+//            try {
+//                List<AlphaSearch> searchResults = new ArrayList<>();
+//
+//                JsonNode rootNode = mapper.readTree(quotes);
+//                JsonNode stockNodes = rootNode.findValue("bestMatches");
+//
+//                if (stockNodes.isArray()) {
+//                    for (JsonNode arrayItem : stockNodes) {
+//                        searchResults.add(convertArrayItemToStock(arrayItem));
+//                    }
+//                }
+//
+//                return searchResults;
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        });
+
+
+
 //        if (StringUtils.isEmpty(data)) {
 //            return searchResults;
 //        }
 //
 //        try {
-//            JsonNode rootNode = mapper.readTree(data);
+//            JsonNode rootNode = mapper.readTree(data.map(s -> {
+//
+//            }));
 //            JsonNode stockNodes = rootNode.findValue("bestMatches");
 //
 //            if (stockNodes.isArray()) {
@@ -50,6 +74,13 @@ public class StockifyConverter {
 //            log.error("Exception while converting stock data: ", exception);
 //        }
 //
+//        AlphaSearch alphaSearch = new AlphaSearch();
+//        alphaSearch.setName("Apple");
+//        alphaSearch.setCurrency("$");
+//        alphaSearch.setRegion("US");
+//        alphaSearch.setSymbol("AAPL");
+//        alphaSearch.setType("stock");
+//        searchResults.add(alphaSearch);
 //        return searchResults;
     }
 

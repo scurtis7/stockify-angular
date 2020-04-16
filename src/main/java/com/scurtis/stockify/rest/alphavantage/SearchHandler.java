@@ -24,8 +24,7 @@ public class SearchHandler implements HandlerFunction<ServerResponse> {
     @Override
     public Mono<ServerResponse> handle(ServerRequest request) {
         log.info("Method: handle()");
-        return ServerResponse
-                .ok()
+        return ServerResponse.ok()
                 .bodyValue(alphaVantageService.search(request.pathVariable("symbol")));
     }
 

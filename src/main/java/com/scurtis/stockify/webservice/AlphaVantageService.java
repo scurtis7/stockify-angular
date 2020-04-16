@@ -7,8 +7,9 @@ import com.scurtis.stockify.model.alphavantage.AlphaSearch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 import static com.scurtis.stockify.config.AppConstants.ALPHA_VANTAGE_BASE_URL;
 import static com.scurtis.stockify.config.AppConstants.FUNCTION_GLOBAL_QUOTE;
@@ -27,7 +28,7 @@ public class AlphaVantageService {
     private final StockifyConverter converter;
     private final StockifyProperties properties;
 
-    public Flux<AlphaSearch> search(String keyword) {
+    public List<AlphaSearch> search(String keyword) {
         log.info("Method: search('{}')", keyword);
         String url = ALPHA_VANTAGE_BASE_URL + FUNCTION_SYMBOL_SEARCH + "&keywords=" + keyword + properties.getAlphaApiKey();
         Mono<String> response = getWebClient().get().uri(url).retrieve().bodyToMono(String.class);
