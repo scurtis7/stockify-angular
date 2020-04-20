@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, of } from "rxjs";
-import { catchError, map } from "rxjs/operators";
-import { Stockquote } from "./stockquote";
-import { Stock } from "./stock";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Stockquote } from './stockquote';
+import { Stock } from './stock';
 
 @Injectable({
   providedIn: 'root'

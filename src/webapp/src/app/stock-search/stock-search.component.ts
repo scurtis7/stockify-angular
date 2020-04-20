@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Stock } from "../stock";
-import { ActivatedRoute } from "@angular/router";
-import { StockService } from "../stock.service";
+import { Stock } from '../stock';
+import { ActivatedRoute } from '@angular/router';
+import { StockService } from '../stock.service';
 
 @Component({
   selector: 'app-stock-search',
